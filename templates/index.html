@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number System Converter</title>
+    <!-- Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans leading-relaxed">
+    <div class="container mx-auto mt-12 p-8 bg-white shadow-xl rounded-lg max-w-lg">
+        <h1 class="text-3xl font-bold text-center text-blue-700 mb-8">Number System Converter</h1>
+
+        <!-- Instructions Section -->
+        <div class="mb-8 p-6 bg-blue-50 text-blue-800 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">How to Use</h2>
+            <p class="mb-3">To convert numbers between different systems, follow these steps:</p>
+            <ol class="list-decimal list-inside mb-3 space-y-2">
+                <li><strong>Enter a number</strong> into the input field.</li>
+                <li><strong>Specify the number system</strong> by using the following prefixes:</li>
+                <ul class="list-disc list-inside mb-3 space-y-1">
+                    <li><strong>b{number}</strong> for Binary (e.g., b{1010})</li>
+                    <li><strong>d{number}</strong> for Decimal (e.g., d{123})</li>
+                    <li><strong>o{number}</strong> for Octal (e.g., o{77})</li>
+                    <li><strong>h{number}</strong> for Hexadecimal (e.g., h{1A2F})</li>
+                </ul>
+                <li><strong>Submit</strong> the form to get the conversions.</li>
+            </ol>
+            <p class="italic">If you don't use a prefix, the system will try to auto-detect the number type based on the characters used.</p>
+        </div>
+
+        <!-- Conversion Form -->
+        <form action="/" method="POST" class="mb-8">
+            <input type="text" name="number_input" placeholder="Enter number (e.g., b{1010}, d{123}, o{77}, h{1A2F})" class="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4" required>
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300">Convert</button>
+        </form>
+
+        <!-- Error Message -->
+        {% if error %}
+            <div class="bg-red-100 text-red-800 p-4 rounded-lg shadow-md mb-8">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <!-- Conversion Results -->
+        {% if conversions %}
+            <div class="bg-green-50 text-green-800 p-6 rounded-lg shadow-md">
+                <h2 class="font-bold text-2xl mb-4 text-green-700">Conversions for {{ num_type }}: {{ num_value }}</h2>
+                <ul class="space-y-3">
+                    {% for label, result in conversions.items() %}
+                        <li><span class="font-semibold text-gray-800">{{ label }}:</span> {{ result }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

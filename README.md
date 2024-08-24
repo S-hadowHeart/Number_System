@@ -1,9 +1,9 @@
 # Number System Converter Web App
 
 Welcome to the Number System Converter web application! This tool allows you to easily convert numbers between binary, decimal, octal, and hexadecimal systems. Whether you're a student learning about number systems or a programmer needing quick conversions, this app provides a straightforward and interactive way to get your results.
-<p align="center">
+
 ![image](https://github.com/user-attachments/assets/9ffba6ef-5919-4bf6-bff2-179fbcc04658)
-</p>
+
 ## Features
 
 - **User-Friendly Interface:** Enjoy a clean and modern design that makes converting numbers a breeze.
